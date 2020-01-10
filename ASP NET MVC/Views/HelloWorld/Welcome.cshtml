@@ -7,6 +7,6 @@
 <ul>
     @for (int i = 0; i < (int)ViewData["NumTimes"]; i++)
     {
-        <li>@ViewData["Message"]</li>
+        <li>@(i+1): @ViewData["Message"]</li>
     }
 </ul>
