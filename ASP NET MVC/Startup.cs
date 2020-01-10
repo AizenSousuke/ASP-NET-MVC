@@ -9,6 +9,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
+using MvcMovie.Data;
+using Microsoft.EntityFrameworkCore;
+
 namespace ASP_NET_MVC
 {
     public class Startup
@@ -24,6 +27,11 @@ namespace ASP_NET_MVC
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            // Call database context service
+            services.AddDbContext<MvcMovieContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("MvcMovieContext")));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
